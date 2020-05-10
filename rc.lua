@@ -45,6 +45,19 @@ do
 end
 -- }}}
 
+-- {{ Autostart windowless programs
+-- This function will spawn processes after awesome starts
+
+local function spawn(procs)
+    for _, proc in ipairs(procs) do
+        awful.spawn.with_shell(string.format("pgrep -u $USER -fx '%s' > /dev/null || (%s)", proc, proc))
+    end
+end
+
+spawn({ "urxvtd", "picom" })    -- entries must be separated by commas
+
+-- }}
+
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
 -- beautiful.init(gears.filesystem.get_themes_dir() .. "zenburn/theme.lua")
@@ -343,7 +356,17 @@ globalkeys = gears.table.join(
               {description = "lua execute prompt", group = "awesome"}),
     -- Menubar
     awful.key({ modkey }, "p", function() menubar.show() end,
-              {description = "show the menubar", group = "launcher"})
+            {description = "show the menubar", group = "launcher"})
+
+    -- Dmenu
+    --[[
+    awful.key({ modkey }, "p", 
+        function() 
+            os.execute(string.format("dmenu_run -i -fn 'UbuntuMono Nerd Font' -nb '%s' -nf '%s' -sb '%s' -sf '%s'",
+            beautiful.bg_normal, beautiful.fg_normal, beautiful.bg_focus, beautiful.fg_focus ))
+        end,
+        {description = "show dmenu", group = "launcher"}),
+    ]]
 )
 
 clientkeys = gears.table.join(
@@ -470,8 +493,9 @@ awful.rules.rules = {
                      keys = clientkeys,
                      buttons = clientbuttons,
                      screen = awful.screen.preferred,
-                     placement = awful.placement.no_overlap+awful.placement.no_offscreen
-     }
+                     placement = awful.placement.no_overlap+awful.placement.no_offscreen,
+                     size_hints_honor = false,
+       }
     },
 
     -- Floating clients.
@@ -507,7 +531,7 @@ awful.rules.rules = {
 
     -- Add titlebars to normal clients and dialogs
     { rule_any = {type = { "normal", "dialog" }
-      }, properties = { titlebars_enabled = true }
+      }, properties = { titlebars_enabled = false }
     },
 
     -- Set Firefox to always map on the tag named "2" on screen 1.
