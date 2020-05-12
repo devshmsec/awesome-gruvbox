@@ -8,10 +8,9 @@
 local gears = require("gears")
 local awful = require("awful")
 local wibox = require("wibox")
+-- local cr = require("lgi").cairo
 
 -- }}}
-
--- local themes_path = require("gears.filesystem").get_themes_dir()
 
 local themes_path = string.format("%s/.config/awesome/themes/", os.getenv("HOME"))
 local dpi = require("beautiful.xresources").apply_dpi
@@ -24,8 +23,7 @@ theme.wallpaper = themes_path .. "gruvbox/background.jpg"
 -- }}}
 
 -- {{{ Styles
-theme.font          = "CaskaydiaCove Nerd Font Mono 12"
--- theme.taglist_font  = "Fira Code Retina 12"
+theme.font          = "Roboto Mono Medium 12"
 
 -- {{{ Colors
 theme.fg_normal  = "#ebdbb2"
@@ -48,6 +46,29 @@ theme.border_marked = "#cc241d"
 -- {{{ Titlebars
 theme.titlebar_bg_focus  = "#282828"
 theme.titlebar_bg_normal = "#32302f"
+-- }}}
+
+-- {{{ Hotkeys Popup
+
+--[[
+local cheatsheet = function(cr, width, height)
+    gears.shape.rounded_rect(cr, width, height, 2)
+end
+]]
+
+theme.hotkeys_bg    = "#282828"
+theme.hotkeys_fg    = "#ebdbb2"
+
+theme.hotkeys_modifiers_fg  = "#458588"
+theme.hotkeys_label_bg      = "#fabd2f"
+theme.hotkeys_label_fg      = "#1d2021"
+
+theme.hotkeys_group_margin  = dpi(20)
+-- theme.hotkeys_shape = gears.shape.rounded_rect(cr, 100, 80, 2)
+
+theme.hotkeys_description_font  = "Source Code Pro Italic 8"
+theme.hotkeys_font              = "Fira Code Retina 10"
+
 -- }}}
 
 -- There are other variable sets
@@ -87,7 +108,6 @@ theme.menu_width  = dpi(150)
 -- {{{ Icons
 -- {{{ Taglist
 
--- awful.util.tagnames = { "1", "", "3", "4", "5" }
 theme.taglist_squares_resize = dpi(6)
 
 theme.taglist_squares_sel   = themes_path .. "gruvbox/taglist/squarefz.png"
@@ -98,7 +118,7 @@ theme.taglist_squares_unsel = themes_path .. "gruvbox/taglist/squarez.png"
 
 -- {{{ Misc
 theme.awesome_icon           = themes_path .. "gruvbox/awesome.png"
-theme.menu_submenu_icon      = themes_path .. "default/submenu.png"
+theme.menu_submenu_icon      = themes_path .. "gruvbox/submenu.png"
 -- }}}
 
 -- {{{ Layout
