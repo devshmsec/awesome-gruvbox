@@ -24,30 +24,30 @@ theme.wallpaper = themes_path .. "gruvbox/background.jpg"
 -- }}}
 
 -- {{{ Styles
-theme.font          = "Fira Code Retina 10"
-theme.taglist_font  = "Fira Code Retina 12"
+theme.font          = "CaskaydiaCove Nerd Font Mono 12"
+-- theme.taglist_font  = "Fira Code Retina 12"
 
 -- {{{ Colors
-theme.fg_normal  = "#DCDCCC"
-theme.fg_focus   = "#F0DFAF"
-theme.fg_urgent  = "#CC9393"
-theme.bg_normal  = "#3F3F3F"
-theme.bg_focus   = "#1E2320"
-theme.bg_urgent  = "#3F3F3F"
+theme.fg_normal  = "#ebdbb2"
+theme.fg_focus   = "#dfc4a1"
+theme.fg_urgent  = "#fbf1c7"
+theme.bg_normal  = "#32302f"
+theme.bg_focus   = "#282828"
+theme.bg_urgent  = "#1d2021"
 theme.bg_systray = theme.bg_normal
 -- }}}
 
 -- {{{ Borders
 theme.useless_gap   = dpi(5)
-theme.border_width  = dpi(2)
-theme.border_normal = "#3F3F3F"
-theme.border_focus  = "#6F6F6F"
-theme.border_marked = "#CC9393"
+theme.border_width  = dpi(3)
+theme.border_normal = "#282828"
+theme.border_focus  = "#689d6a"
+theme.border_marked = "#cc241d"
 -- }}}
 
 -- {{{ Titlebars
-theme.titlebar_bg_focus  = "#3F3F3F"
-theme.titlebar_bg_normal = "#3F3F3F"
+theme.titlebar_bg_focus  = "#282828"
+theme.titlebar_bg_normal = "#32302f"
 -- }}}
 
 -- There are other variable sets
@@ -72,7 +72,7 @@ theme.titlebar_bg_normal = "#3F3F3F"
 -- }}}
 
 -- {{{ Mouse finder
-theme.mouse_finder_color = "#CC9393"
+theme.mouse_finder_color = "#cc241d"
 -- mouse_finder_[timeout|animate_timeout|radius|factor]
 -- }}}
 
@@ -87,7 +87,7 @@ theme.menu_width  = dpi(150)
 -- {{{ Icons
 -- {{{ Taglist
 
-awful.util.tagnames = { "1", "", "3", "4", "5" }
+-- awful.util.tagnames = { "1", "", "3", "4", "5" }
 theme.taglist_squares_resize = dpi(6)
 
 theme.taglist_squares_sel   = themes_path .. "gruvbox/taglist/squarefz.png"

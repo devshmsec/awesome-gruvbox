@@ -199,7 +199,8 @@ awful.screen.connect_for_each_screen(function(s)
     set_wallpaper(s)
 
     -- Each screen has its own tag table.
-    awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, s, awful.layout.layouts[1])
+    -- awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, s, awful.layout.layouts[1])
+    awful.tag({ "1", "2", "3", "4", "5", "6", "7" }, s, awful.layout.layouts[1])
 
     -- Create a promptbox for each screen
     s.mypromptbox = awful.widget.prompt()
@@ -354,19 +355,23 @@ globalkeys = gears.table.join(
                   }
               end,
               {description = "lua execute prompt", group = "awesome"}),
+
     -- Menubar
+    --[[
     awful.key({ modkey }, "p", function() menubar.show() end,
             {description = "show the menubar", group = "launcher"})
+    -- ]]
 
     -- Dmenu
-    --[[
+    -- [[
     awful.key({ modkey }, "p", 
         function() 
-            os.execute(string.format("dmenu_run -i -fn 'UbuntuMono Nerd Font' -nb '%s' -nf '%s' -sb '%s' -sf '%s'",
-            beautiful.bg_normal, beautiful.fg_normal, beautiful.bg_focus, beautiful.fg_focus ))
+            -- os.execute(string.format("dmenu_run -i -h 30 -nb '%s' -nf '%s' -sb '%s' -sf '%s'",
+            os.execute(string.format("dmenu_run -i -h 30")) -- -fn '%s'", beautiful.font))
+            -- beautiful.bg_normal, beautiful.fg_normal, beautiful.bg_focus, beautiful.fg_focus ))
         end,
-        {description = "show dmenu", group = "launcher"}),
-    ]]
+        {description = "show dmenu", group = "launcher"})
+    -- ]]
 )
 
 clientkeys = gears.table.join(
@@ -494,7 +499,7 @@ awful.rules.rules = {
                      buttons = clientbuttons,
                      screen = awful.screen.preferred,
                      placement = awful.placement.no_overlap+awful.placement.no_offscreen,
-                     size_hints_honor = false,
+                     size_hints_honor = true,
        }
     },
 
