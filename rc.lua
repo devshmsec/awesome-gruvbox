@@ -145,6 +145,53 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 -- Create a textclock widget
 mytextclock = wibox.widget.textclock()
 
+-- Calender
+local calendar = awful.widget.calendar_popup.month({
+
+    position        = "tr",
+    margin          = 5,
+    spacing         = 5,
+    font            = "Ubuntu Mono Medium 12",
+    long_weekdays   = true,
+    week_numbers    = true,
+
+    style_month     = { fg_color = "#ebdbb2", bg_color = "#1d2021", padding = 10 },
+    style_header    = { fg_color = "#1d2021", bg_color = "#689d6a" },
+
+    style_normal    = {
+
+        fg_color    = "#d5c4a1",
+        bg_color    = "#282828",
+        shape       = gears.shape.circle,
+        padding     = 8
+    },
+    style_focus     = {
+
+        bg_color    = "#458588",
+        fg_color    = "#1d2021",
+        shape       = gears.shape.circle,
+        padding     = 8
+    },
+    style_weekday   = {
+        
+        fg_color        = "#d5c4a1",
+        bg_color        = "#1d2021",
+        border_color    = "#1d2021"
+    },
+    style_weeknumber    = {
+
+        fg_color        = "#d5c4a1",
+        bg_color        = "#1d2021",
+        padding         = 10,
+        opacity         = 0.5,
+        border_width    = 0,
+        border_color    = "#1d2021"
+    }
+})
+
+-- Attach calendar widget to text clock widget
+calendar:attach(mytextclock)
+
 -- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(
                     awful.button({ }, 1, function(t) t:view_only() end),
@@ -205,7 +252,61 @@ awful.screen.connect_for_each_screen(function(s)
     set_wallpaper(s)
 
     -- Each screen has its own tag table.
-    awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, s, awful.layout.layouts[1])
+    -- awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8" }, s, awful.layout.layouts[1])
+
+    awful.tag.add("a", {
+        -- icon        = string.format("%s/.config/awesome/themes/gruvbox/awesome.png", os.getenv("HOME")),
+        layout      = awful.layout.suit.tile,
+        screen      = s,
+    })
+
+    awful.tag.add("w", {
+        -- icon        = string.format("%s/.config/awesome/themes/gruvbox/awesome.png", os.getenv("HOME")),
+        layout      = awful.layout.suit.tile,
+        screen      = s,
+    })
+
+    awful.tag.add("e", {
+        -- icon        = string.format("%s/.config/awesome/themes/gruvbox/awesome.png", os.getenv("HOME")),
+        layout      = awful.layout.suit.tile,
+        screen      = s,
+    })
+    
+    awful.tag.add("s", {
+        -- icon        = string.format("%s/.config/awesome/themes/gruvbox/awesome.png", os.getenv("HOME")),
+        layout      = awful.layout.suit.tile,
+        screen      = s,
+    })
+
+    awful.tag.add("o", {
+        -- icon        = string.format("%s/.config/awesome/themes/gruvbox/awesome.png", os.getenv("HOME")),
+        layout      = awful.layout.suit.tile,
+        screen      = s,
+    })
+
+    awful.tag.add("m", {
+        -- icon        = string.format("%s/.config/awesome/themes/gruvbox/awesome.png", os.getenv("HOME")),
+        layout      = awful.layout.suit.tile,
+        screen      = s,
+    })
+
+    awful.tag.add("e", {
+        -- icon        = string.format("%s/.config/awesome/themes/gruvbox/awesome.png", os.getenv("HOME")),
+        layout      = awful.layout.suit.tile,
+        screen      = s,
+    })
+
+    awful.tag.add("w", {
+        -- icon        = string.format("%s/.config/awesome/themes/gruvbox/awesome.png", os.getenv("HOME")),
+        layout      = awful.layout.suit.tile,
+        screen      = s,
+    })
+
+    awful.tag.add("m", {
+        -- icon        = string.format("%s/.config/awesome/themes/gruvbox/awesome.png", os.getenv("HOME")),
+        layout      = awful.layout.suit.tile,
+        screen      = s,
+    })
 
     -- Create a promptbox for each screen
     s.mypromptbox = awful.widget.prompt()
@@ -226,11 +327,13 @@ awful.screen.connect_for_each_screen(function(s)
     }
 
     -- Create a tasklist widget
+    -- [[
     s.mytasklist = awful.widget.tasklist {
         screen  = s,
         filter  = awful.widget.tasklist.filter.currenttags,
         buttons = tasklist_buttons
     }
+    --]]
 
     -- Create the wibox
     s.mywibox = awful.wibar({ position = "top", screen = s })
