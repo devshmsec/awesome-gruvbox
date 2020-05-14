@@ -120,14 +120,14 @@ theme.menu_width  = dpi(150)
 
 theme.taglist_squares_resize = dpi(6)
 
-theme.taglist_squares_sel   = themes_path .. "gruvbox/taglist/squarefz.png"
-theme.taglist_squares_unsel = themes_path .. "gruvbox/taglist/squarez.png"
+-- theme.taglist_squares_sel   = themes_path .. "gruvbox/taglist/squarefz.png"
+-- theme.taglist_squares_unsel = themes_path .. "gruvbox/taglist/squarez.png"
 --theme.taglist_squares_resize = "false"
 
 -- }}}
 
 -- {{{ Misc
-theme.awesome_icon           = themes_path .. "gruvbox/awesome.png"
+theme.awesome_icon           = themes_path .. "gruvbox/archlinux.png"
 theme.menu_submenu_icon      = themes_path .. "gruvbox/submenu.png"
 -- }}}
 

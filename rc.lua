@@ -275,37 +275,37 @@ awful.screen.connect_for_each_screen(function(s)
     
     awful.tag.add("", {
         
-        layout      = awful.layout.suit.tile,
+        layout      = awful.layout.layouts[4],
         screen      = s,
     })
 
     awful.tag.add("", {
         
-        layout      = awful.layout.suit.tile,
+        layout      = awful.layout.layouts[5],
         screen      = s,
     })
 
     awful.tag.add("", {
         
-        layout      = awful.layout.suit.tile,
+        layout      = awful.layout.layouts[6],
         screen      = s,
     })
 
     awful.tag.add("", {
         
-        layout      = awful.layout.suit.tile,
+        layout      = awful.layout.layouts[7],
         screen      = s,
     })
 
     awful.tag.add("", {
         
-        layout      = awful.layout.suit.tile,
+        layout      = awful.layout.layouts[8],
         screen      = s,
     })
 
     awful.tag.add("", {
         
-        layout      = awful.layout.suit.tile,
+        layout      = awful.layout.layouts[9],
         screen      = s,
     })
 
@@ -332,7 +332,32 @@ awful.screen.connect_for_each_screen(function(s)
     s.mytasklist = awful.widget.tasklist {
         screen  = s,
         filter  = awful.widget.tasklist.filter.currenttags,
-        buttons = tasklist_buttons
+        buttons = tasklist_buttons,
+
+        widget_template = {
+            {
+                {
+                    {
+                        {
+                            id     = 'icon_role',
+                            widget = wibox.widget.imagebox,
+                        },
+                        margins = 6,
+                        widget  = wibox.container.margin,
+                    },
+                    {
+                        id     = 'text_role',
+                        widget = wibox.widget.textbox,
+                    },
+                    layout = wibox.layout.fixed.horizontal,
+                },
+                left  = 10,
+                right = 10,
+                widget = wibox.container.margin
+            },
+            id     = 'background_role',
+            widget = wibox.container.background,
+        },
     }
     --]]
 
