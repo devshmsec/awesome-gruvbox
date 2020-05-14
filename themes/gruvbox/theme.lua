@@ -48,6 +48,17 @@ theme.titlebar_bg_focus  = "#282828"
 theme.titlebar_bg_normal = "#32302f"
 -- }}}
 
+-- {{{ Taglist
+
+theme.taglist_font          = "awesomewm 12"
+theme.taglist_fg_focus      = "#b8bb26"
+theme.taglist_fg_occupied   = "#83a598"
+theme.taglist_fg_urgent     = "#fb4934"
+theme.taglist_fg_empty      = "#928374"
+theme.taglist_spacing       = 4
+
+-- }}}
+
 -- {{{ Notifications
 
 
@@ -55,12 +66,6 @@ theme.titlebar_bg_normal = "#32302f"
 -- }}}
 
 -- {{{ Hotkeys Popup
-
---[[
-local cheatsheet = function(cr, width, height)
-    gears.shape.rounded_rect(cr, width, height, 2)
-end
-]]
 
 theme.hotkeys_bg    = "#282828"
 theme.hotkeys_fg    = "#ebdbb2"
@@ -70,7 +75,6 @@ theme.hotkeys_label_bg      = "#fabd2f"
 theme.hotkeys_label_fg      = "#1d2021"
 
 theme.hotkeys_group_margin  = dpi(20)
--- theme.hotkeys_shape = gears.shape.rounded_rect(cr, 100, 80, 2)
 
 theme.hotkeys_description_font  = "Source Code Pro Italic 8"
 theme.hotkeys_font              = "Fira Code Retina 10"

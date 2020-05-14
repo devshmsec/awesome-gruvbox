@@ -97,9 +97,9 @@ awful.layout.layouts = {
     awful.layout.suit.max.fullscreen,
     awful.layout.suit.magnifier,
     awful.layout.suit.corner.nw,
-    -- awful.layout.suit.corner.ne,
-    -- awful.layout.suit.corner.sw,
-    -- awful.layout.suit.corner.se,
+    awful.layout.suit.corner.ne,
+    awful.layout.suit.corner.sw,
+    awful.layout.suit.corner.se,
 
 }
 -- }}}
@@ -252,58 +252,59 @@ awful.screen.connect_for_each_screen(function(s)
     set_wallpaper(s)
 
     -- Each screen has its own tag table.
-    -- awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8" }, s, awful.layout.layouts[1])
+    -- awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, s, awful.layout.layouts[1])
 
-    awful.tag.add("a", {
-        -- icon        = string.format("%s/.config/awesome/themes/gruvbox/awesome.png", os.getenv("HOME")),
-        layout      = awful.layout.suit.tile,
+    awful.tag.add("", {
+        
+        layout      = awful.layout.layouts[1],  -- tile
+        screen      = s,
+        selected    = true
+    })
+
+    awful.tag.add("", {
+        
+        layout      = awful.layout.layouts[2],  -- floating
         screen      = s,
     })
 
-    awful.tag.add("w", {
-        -- icon        = string.format("%s/.config/awesome/themes/gruvbox/awesome.png", os.getenv("HOME")),
-        layout      = awful.layout.suit.tile,
-        screen      = s,
-    })
-
-    awful.tag.add("e", {
-        -- icon        = string.format("%s/.config/awesome/themes/gruvbox/awesome.png", os.getenv("HOME")),
-        layout      = awful.layout.suit.tile,
+    awful.tag.add("", {
+        
+        layout      = awful.layout.layouts[10],  -- max
         screen      = s,
     })
     
-    awful.tag.add("s", {
-        -- icon        = string.format("%s/.config/awesome/themes/gruvbox/awesome.png", os.getenv("HOME")),
+    awful.tag.add("", {
+        
         layout      = awful.layout.suit.tile,
         screen      = s,
     })
 
-    awful.tag.add("o", {
-        -- icon        = string.format("%s/.config/awesome/themes/gruvbox/awesome.png", os.getenv("HOME")),
+    awful.tag.add("", {
+        
         layout      = awful.layout.suit.tile,
         screen      = s,
     })
 
-    awful.tag.add("m", {
-        -- icon        = string.format("%s/.config/awesome/themes/gruvbox/awesome.png", os.getenv("HOME")),
+    awful.tag.add("", {
+        
         layout      = awful.layout.suit.tile,
         screen      = s,
     })
 
-    awful.tag.add("e", {
-        -- icon        = string.format("%s/.config/awesome/themes/gruvbox/awesome.png", os.getenv("HOME")),
+    awful.tag.add("", {
+        
         layout      = awful.layout.suit.tile,
         screen      = s,
     })
 
-    awful.tag.add("w", {
-        -- icon        = string.format("%s/.config/awesome/themes/gruvbox/awesome.png", os.getenv("HOME")),
+    awful.tag.add("", {
+        
         layout      = awful.layout.suit.tile,
         screen      = s,
     })
 
-    awful.tag.add("m", {
-        -- icon        = string.format("%s/.config/awesome/themes/gruvbox/awesome.png", os.getenv("HOME")),
+    awful.tag.add("", {
+        
         layout      = awful.layout.suit.tile,
         screen      = s,
     })
