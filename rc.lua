@@ -1,3 +1,8 @@
+-------------------------------
+--  "awesomewm" rc.lua file  --
+--    By Vinay V. (vergil)   --
+-------------------------------
+
 -- If LuaRocks is installed, make sure that packages installed through it are
 -- found (e.g. lgi). If LuaRocks is not installed, do nothing.
 pcall(require, "luarocks.loader")
@@ -6,14 +11,18 @@ pcall(require, "luarocks.loader")
 local gears = require("gears")
 local awful = require("awful")
 require("awful.autofocus")
+
 -- Widget and layout library
 local wibox = require("wibox")
+
 -- Theme handling library
 local beautiful = require("beautiful")
+
 -- Notification library
 local naughty = require("naughty")
 local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup")
+
 -- Enable hotkeys help widget for VIM and other apps
 -- when client with a matching name is opened:
 require("awful.hotkeys_popup.keys")
@@ -60,12 +69,9 @@ spawn({ "urxvtd", "picom" })    -- entries must be separated by commas
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
--- beautiful.init(gears.filesystem.get_themes_dir() .. "zenburn/theme.lua")
---
 beautiful.init(string.format("%s/.config/awesome/themes/gruvbox/theme.lua", os.getenv("HOME")))
 
 -- This is used later as the default terminal and editor to run.
-
 local terminal = "urxvt"
 local editor = os.getenv("EDITOR") or "vim"
 local gui_editor = os.getenv("GUI_EDITOR") or "code"
@@ -73,11 +79,6 @@ local browser = os.getenv("BROWSER") or "firefox"
 local scrlock = "slock"
 
 -- Default modkey.
--- Usually, Mod4 is the key with a logo between Control and Alt.
--- If you do not like this or do not have such a key,
--- I suggest you to remap Mod4 to another key using xmodmap or other tools.
--- However, you can use another modifier like Mod1, but it may interact with others.
-
 modkey = "Mod4"
 altkey = "Mod1"
 
@@ -131,15 +132,12 @@ else
     })
 end
 
-mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
+mylauncher = awful.widget.launcher({ image = beautiful.archlinux_icon,
                                      menu = mymainmenu })
 
 -- Menubar configuration
 menubar.utils.terminal = terminal -- Set the terminal for applications that require it
 -- }}}
-
--- Keyboard map indicator and switcher
--- mykeyboardlayout = awful.widget.keyboardlayout()
 
 -- {{{ Wibar
 -- Create a textclock widget
@@ -252,7 +250,6 @@ awful.screen.connect_for_each_screen(function(s)
     set_wallpaper(s)
 
     -- Each screen has its own tag table.
-    -- awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, s, awful.layout.layouts[1])
 
     awful.tag.add("", {
         
@@ -263,49 +260,49 @@ awful.screen.connect_for_each_screen(function(s)
 
     awful.tag.add("", {
         
-        layout      = awful.layout.layouts[2],  -- floating
+        layout      = awful.layout.layouts[10],  -- max
         screen      = s,
     })
 
     awful.tag.add("", {
         
-        layout      = awful.layout.layouts[10],  -- max
+        layout      = awful.layout.layouts[6],  -- fair
         screen      = s,
     })
     
     awful.tag.add("", {
         
-        layout      = awful.layout.layouts[4],
+        layout      = awful.layout.layouts[2],  -- floating
         screen      = s,
     })
 
     awful.tag.add("", {
         
-        layout      = awful.layout.layouts[5],
+        layout      = awful.layout.layouts[5],  -- tiletop
         screen      = s,
     })
 
     awful.tag.add("", {
         
-        layout      = awful.layout.layouts[6],
+        layout      = awful.layout.layouts[14], -- cornerne
         screen      = s,
     })
 
     awful.tag.add("", {
         
-        layout      = awful.layout.layouts[7],
+        layout      = awful.layout.layouts[15], -- cornersw
         screen      = s,
     })
 
     awful.tag.add("", {
         
-        layout      = awful.layout.layouts[8],
+        layout      = awful.layout.layouts[8],  -- spiral
         screen      = s,
     })
 
     awful.tag.add("", {
         
-        layout      = awful.layout.layouts[9],
+        layout      = awful.layout.layouts[9],  -- dwindle
         screen      = s,
     })
 
@@ -328,7 +325,6 @@ awful.screen.connect_for_each_screen(function(s)
     }
 
     -- Create a tasklist widget
-    -- [[
     s.mytasklist = awful.widget.tasklist {
         screen  = s,
         filter  = awful.widget.tasklist.filter.currenttags,
@@ -359,7 +355,6 @@ awful.screen.connect_for_each_screen(function(s)
             widget = wibox.container.background,
         },
     }
-    --]]
 
     -- Create the wibox
     s.mywibox = awful.wibar({ position = "top", screen = s })
@@ -376,7 +371,6 @@ awful.screen.connect_for_each_screen(function(s)
         s.mytasklist, -- Middle widget
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
-            mykeyboardlayout,
             wibox.widget.systray(),
             mytextclock,
             s.mylayoutbox,
